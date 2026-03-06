@@ -7,6 +7,13 @@ locals {
   aws_region  = "ap-southeast-3"
 }
 
+terraform {
+  before_hook "before_hook" {
+    commands     = ["plan"]
+    execute      = ["infracost", "breakdown", "--path", "."]
+  }
+}
+
 generate "provider" {
   path      = "provider.tf"
   if_exists = "overwrite_terragrunt"
