@@ -10,7 +10,7 @@ locals {
 terraform {
   before_hook "before_hook" {
     commands     = ["plan"]
-    execute      = ["infracost", "breakdown", "--path", "."]
+    execute      = ["echo", "I'm running before hook only for plan"]
   }
 }
 
